@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gemini AI Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h2 class="text-info">💬 Gemini AI Sentiment Analysis</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="text" class="form-label">Enter your text:</label>
+                <textarea class="form-control" name="text" rows="4" required>{{ user_input }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Analyze Sentiment</button>
+        </form>
+
+        {% if sentiment %}
+            <div class="mt-4">
+                <h4>Result</h4>
+                <p><strong>Text:</strong> {{ user_input }}</p>
+                <p><strong>Sentiment:</strong> <span class="text-success">{{ sentiment }}</span></p>
+                <p><strong>Raw Response:</strong> {{ raw_response }}</p>
+            </div>
+        {% endif %}
+
+        <a href="/" class="btn btn-secondary mt-4">⬅ Back to Home</a>
+    </div>
+</body>
+{% include 'footer.html' %}
+</html>

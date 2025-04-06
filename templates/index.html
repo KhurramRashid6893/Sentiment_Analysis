@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Covid-19 Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .feature-box {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        .btn-lg {
+            padding: 15px 30px;
+            font-weight: bold; /* <-- Bold button text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center mb-5">
+            <h1 class="text-danger">📊 Covid-19 Vaccination Tweet Sentiment Analysis</h1>
+            <p class="lead">Analyze public sentiment around Covid-19 vaccinations using ML models and Gemini AI.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 feature-box">
+                <h4>📁 Raw Data</h4>
+                <p>View the cleaned and preprocessed tweets used for analysis.</p>
+                <a href="/raw-data" class="btn btn-outline-primary btn-lg">View Raw Data</a>
+            </div>
+
+            <div class="col-md-6 feature-box">
+                <h4>🤖 Model Selection</h4>
+                <p>Compare Logistic Regression and SVC models on sentiment classification.</p>
+                <a href="/model-selection" class="btn btn-outline-success btn-lg">Choose Model</a>
+            </div>
+
+            <div class="col-md-6 feature-box">
+                <h4>📊 Sentiment Distribution</h4>
+                <p>Visualize the breakdown of sentiment across the dataset with a pie chart.</p>
+                <a href="/sentiment-distribution" class="btn btn-outline-warning btn-lg">View Pie Chart</a>
+            </div>
+
+            <div class="col-md-6 feature-box">
+                <h4>💬 Gemini AI Sentiment</h4>
+                <p>Analyze sentiment of custom text using Google Gemini AI.</p>
+                <a href="/gemini-sentiment" class="btn btn-outline-info btn-lg">Use Gemini AI</a>
+            </div>
+        </div>
+    </div>
+</body>
+{% include 'footer.html' %}
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Selection - Covid-19 Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+        .wordcloud {
+            max-width: 100%;
+            height: auto;
+        }
+        .section {
+            margin-top: 40px;
+        }
+        h2 {
+            color: #198754;
+            margin-bottom: 30px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <a href="/" class="btn btn-outline-secondary back-button">⬅ Back to Home</a>
+
+        <div class="text-center mb-4">
+            <h2>🤖 Model Selection & Evaluation</h2>
+            <p class="lead">Compare classification models and visualize word distributions by sentiment.</p>
+        </div>
+
+        <div class="mb-4 text-center">
+            <form method="post" action="/model-selection">
+                <label for="model">Choose a Model:</label>
+                <select name="model" id="model" class="form-select d-inline w-auto mx-2">
+                    <option value="Logistic Regression" {% if selected_model == 'Logistic Regression' %}selected{% endif %}>Logistic Regression</option>
+                    <option value="SVC" {% if selected_model == 'SVC' %}selected{% endif %}>SVC</option>
+                </select>
+                <button type="submit" class="btn btn-success">Train & Evaluate</button>
+            </form>
+        </div>
+
+        {% if accuracy %}
+        <div class="section">
+            <h4 class="text-primary">📈 Accuracy</h4>
+            <p><strong>{{ selected_model }} Accuracy:</strong> {{ accuracy }}%</p>
+        </div>
+
+        <div class="section">
+            <h4 class="text-primary">📋 Classification Report</h4>
+            <pre>{{ classification_report }}</pre>
+        </div>
+
+        <div class="section">
+            <h4 class="text-primary">☁️ Word Clouds by Sentiment</h4>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <h5 class="text-success">Positive</h5>
+                    <img src="data:image/png;base64,{{ wordclouds['Positive'] }}" class="wordcloud">
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5 class="text-danger">Negative</h5>
+                    <img src="data:image/png;base64,{{ wordclouds['Negative'] }}" class="wordcloud">
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5 class="text-warning">Neutral</h5>
+                    <img src="data:image/png;base64,{{ wordclouds['Neutral'] }}" class="wordcloud">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+{% include 'footer.html' %}
+</html>
