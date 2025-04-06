@@ -98,6 +98,7 @@ Then open `http://localhost:5000` in your browser.
 ## 🌐 Deployment on Render
 
 ### Required Files:
+- `Procfile`
 - `requirements.txt`
 
 ### Steps:
